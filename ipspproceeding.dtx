@@ -45,8 +45,7 @@ version.  The latest version of this license is in the file:
 
 http://www.latex-project.org/lppl.txt
 
-This work is "maintained" (as per LPPL maintenance status) by
-Matteo Franchi.
+This work is "maintained" (as per LPPL maintenance status) by Matteo Franchi.
 
 This work consists of the file ipspproceeding.dtx and a Makefile.
 Running make generates the derived files README.txt, ipspproceeding.pdf and ipspproceeding.cls.
@@ -138,6 +137,9 @@ Running make install installs the files in the local TeX tree.
 %<*class>
 \LoadClass[openright]{book}
 \usepackage[paperwidth=165mm, paperheight=240mm,left=24mm, right=22mm, top=22mm, bottom=22mm]{geometry}
+\usepackage[font=footnotesize,format=hang,labelfont={sf,bf}]{caption}
+\usepackage[Lenny]{fncychap}
+
 %    \end{macrocode}
 % \begin{macro}{\abstractname}
 % This macro puts the abstract--name.
@@ -146,6 +148,44 @@ Running make install installs the files in the local TeX tree.
 %    \end{macrocode}
 % \end{macro}
 %
+
+% \begin{macro}{\chaptername}
+% This macro puts the abstract--name.
+%    \begin{macrocode}
+\renewcommand{\chaptername}{Problem}
+%    \end{macrocode}
+% \end{macro}
+
+% \begin{macro}{\chaptername}
+% This macro puts the abstract--name.
+%    \begin{macrocode}
+\newcommand{\chapterauthor}[1]{%
+  {\parindent0pt\vspace*{-25pt}%
+  \linespread{1.1}\small\textbf{#1}%
+  \par\nobreak\vspace*{35pt}}
+  \@afterheading%
+}
+%    \end{macrocode}
+% \end{macro}
+
+
+% \begin{macro}{\editorialNotes}
+% This macro puts the abstract--name.
+%    \begin{macrocode}
+\newcommand{\editorialNotes}{
+
+All rights reserved. No part of this book may be reproduced in any form, by
+Photostat, microform, retrieval system, or any other means, without prior
+written permission of the publisher.
+
+\vspace{1em}
+
+Copyright \textcopyright 2014 by Scientific Committee of IPSP2014
+}
+%    \end{macrocode}
+% \end{macro}
+%
+
 
 % \begin{environment}{abstract}
 % This is the abstract enviroment.
