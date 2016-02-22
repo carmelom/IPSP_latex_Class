@@ -133,14 +133,42 @@ Running make install installs the files in the local TeX tree.
 %
 % \section{Implementation}
 %
-%    \begin{macrocode}
+%   \begin{macro}
+%	
+% 	The book class is loaded.		
+%   \begin{macrocode}
 %<*class>
 \LoadClass[openright]{book}
-\usepackage[paperwidth=165mm, paperheight=240mm,left=24mm, right=22mm, top=22mm, bottom=22mm]{geometry}
+\usepackage[paperwidth=170mm, paperheight=240mm, left=24mm, right=22mm, top=22mm, bottom=22mm]{geometry}
+
+\usepackage[UKenglish]{babel}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{epsfig}
+\usepackage[version=3]{mhchem}
+\usepackage{subfig}
+\usepackage{booktabs}
+\usepackage{ctable}
+\usepackage{siunitx}
+\DeclareSIQualifier\rms{rms}
+\usepackage{eurosym}
+\usepackage[colorlinks=true, citecolor=black, urlcolor=black, hidelinks]{hyperref}
+\usepackage{url}
+\usepackage{scrextend}
+\usepackage{lastpage}
+
+\usepackage[sectionbib]{chapterbib}
+\usepackage[numbers]{natbib}
+
 \usepackage[font=footnotesize,format=hang,labelfont={sf,bf}]{caption}
-\usepackage[Lenny]{fncychap}
+\usepackage[Bjarne]{fncychap}
+
+\def\ISBNnumber#1{\def\@ISBNnumber{#1}}
+\newcommand{\printISBNnumber}{\@ISBNnumber}
 
 %    \end{macrocode}
+% \end{macro}
 % \begin{macro}{\abstractname}
 % This macro puts the abstract--name.
 %    \begin{macrocode}
@@ -149,8 +177,15 @@ Running make install installs the files in the local TeX tree.
 % \end{macro}
 %
 
-% \begin{macro}{\chaptername}
+% \begin{macro}{\equationname}
 % This macro puts the abstract--name.
+%    \begin{macrocode}
+\newcommand{\equationname}{Eq:}
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{macro}{\chaptername}
+% The chapter name is Problem.
 %    \begin{macrocode}
 \renewcommand{\chaptername}{Problem}
 %    \end{macrocode}
@@ -168,19 +203,93 @@ Running make install installs the files in the local TeX tree.
 %    \end{macrocode}
 % \end{macro}
 
+% \begin{macro}{\chaptername}
+% This macro puts the abstract--name.
+%    \begin{macrocode}
+\newcommand{\chapterBibliography}[1]{%
+	\bibliographystyle{unsrt}
+	\bibliography{#1}
+}
+%    \end{macrocode}
+% \end{macro}
+
+% \begin{macro}{\chaptername}
+% This macro puts the abstract--name.
+%    \begin{macrocode}
+\newcommand{\makeFrontespizio}{\begin{titlepage}
+
+\noindent
+\includegraphics[width=\textwidth]{loghi}
+
+\begin{flushright}
+\vspace{15em}
+\textbf{\LARGE{Proceedings of the event IPSP2014}}
+
+\Large{Industrial Problem Solving with Physics}
+
+Trento, July 21$^{\texttt{st}}$ -- 26$^{\texttt{th}}$, 2014
+
+\vspace{10em}
+\normalsize{
+\textbf{Editors}
+
+Matteo Franchi
+
+Davide Gandolfi
+
+Luca Matteo Martini
+}
+\end{flushright}
+\vfill
+\begin{center}
+Trento
+
+Universit\`a degli Studi di Trento
+\end{center}
+
+\clearpage{\pagestyle{empty}}
+\end{titlepage}
+}
+%    \end{macrocode}
+% \end{macro}
 
 % \begin{macro}{\editorialNotes}
 % This macro puts the abstract--name.
 %    \begin{macrocode}
 \newcommand{\editorialNotes}{
-
+\thispagestyle{empty}
+\null
+\vfill
+\noindent
 All rights reserved. No part of this book may be reproduced in any form, by
-Photostat, microform, retrieval system, or any other means, without prior
-written permission of the publisher.
+photostat, microform, retrieval system, or any other means, without prior
+written permission of the editors.
 
 \vspace{1em}
+\noindent
+Proceedings of the event IPSP2014: Industrial Problem Solving with Physics: Trento, July 21$^{\texttt{st}}$ - 26$^{\texttt{th}}$, 2014 / editors Matteo Franchi, Davide Gandolfi, Luca Matteo Martini. - Trento: Universit\`a degli Studi di Trento, 2014. - 75 p.: ill. - ISBN: \printISBNnumber.
 
-Copyright \textcopyright 2014 by Scientific Committee of IPSP2014
+\vspace{3em}
+\noindent
+\textcopyright{} 2014 by Scientific Committee of IPSP2014
+%\textcopyright{}2014 Universit\`a degli Studi di Trento, Trento, Italy
+\clearpage{\pagestyle{empty}}
+}
+%    \end{macrocode}
+% \end{macro}
+%
+
+% \begin{macro}{\signatureIPSP}
+% This macro puts the signature.
+%    \begin{macrocode}
+\newcommand{\signatureIPSP}{
+\vspace{2cm}
+\begin{flushright}
+\textit{Matteo Franchi}\\
+\textit{Davide Gandolfi}\\
+\textit{Luca Matteo Martini}\\
+\textit{Scientific Committee of Industrial Problem Solving with Physics 2014}
+\end{flushright}
 }
 %    \end{macrocode}
 % \end{macro}
